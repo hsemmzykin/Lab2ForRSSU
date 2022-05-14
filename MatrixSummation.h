@@ -28,11 +28,11 @@ Matrix<T> SummationRoutine(Matrix<T> a , Matrix<T> b){
 #ifdef TIME_SEQUENTIAL
     auto start = high_resolution_clock::now();
 #endif
-    for (size_t i = 0; i < a.rows; ++i){
+    for (int i = 0; i < a.rows; ++i){
 #ifdef OMP
 #pragma omp parallel for
 #endif
-        for (size_t j = 0; j < a.cols; ++j)
+        for (int j = 0; j < a.cols; ++j)
             res.matrix[i * a.rows + j] = a.matrix[i * a.rows + j] + b.matrix[i * b.rows + j];
     }
 #ifdef TIME_SEQUENTIAL
